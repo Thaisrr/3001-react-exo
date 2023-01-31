@@ -1,0 +1,42 @@
+.Nav {
+    padding: 30px 0;
+}
+
+.Nav ul {
+    list-style: none;
+    padding: 0;
+    width: var(--width);
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 20px;
+}
+
+.Nav a:link, .Nav a:visited {
+    font-size: 1.2em;
+    font-family: var(--title-font);
+    color: var(--dark);
+    text-decoration: none;
+}
+
+.Nav a {
+    position: relative;
+}
+
+.Nav a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--dark);
+    transition: width .35s ease-in-out;
+}
+
+.Nav a:hover:after, .Nav a.active:hover {
+    width: 100%;
+}
+.Nav a.active {
+    color: var(--primary)
+}
