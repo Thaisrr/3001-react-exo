@@ -12,8 +12,8 @@ const Nav = () => {
         <nav className='Nav'>
             <ul>
                 {routes.map(r => (
-                    <li>
-                        <NavLink key={r.path} to={r.path}>{r.text}</NavLink>
+                    <li key={r.path}>
+                        <NavLink to={r.path}>{r.text}</NavLink>
                     </li>
                 ))}
             </ul>
