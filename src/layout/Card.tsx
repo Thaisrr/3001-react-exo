@@ -1,19 +1,16 @@
 import {Show} from "../utils/types/Show";
-import allShows from "../utils/const/Shows";
+import showsConst from "../utils/const/Shows";
 
 type Props = {
     show: Show,
-    updateMovies: Function
+    refresh: Function
 }
-const Card = ({show, updateMovies} : Props) => {
+const Card = ({show, refresh} : Props) => {
 
     const setWatched = () => {
-        const index = allShows.findIndex(s => s.id === show.id);
-        console.log(`Previous : ${index} --- ${allShows[index].is_watched}`);
-        allShows[index].is_watched = !allShows[index].is_watched;
-        console.log(`After : ${index} --- ${allShows[index].is_watched}`);
-        // updateMovies([...allShows]);
-        updateMovies();
+        const index = showsConst.findIndex(s => s.id === show.id);
+        showsConst[index].is_watched = !showsConst[index].is_watched;
+        refresh();
     }
 
     return (

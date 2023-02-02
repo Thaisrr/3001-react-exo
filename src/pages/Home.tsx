@@ -1,28 +1,26 @@
-import allShows from "../utils/const/Shows";
+import showsConst from "../utils/const/Shows";
 import {useState} from "react";
 import {Show} from "../utils/types/Show";
-import ShowsFilter, {Filter} from "../layout/ShowsFilter";
+import ShowsFilter from "../layout/ShowsFilter";
 import Card from "../layout/Card";
 
 const Home = () => {
-    const [shows, setShows] = useState<Show[]>(allShows);
-    const [filter, setFilter] = useState<Filter>({search: '', cat: "all", watched: "all"});
+    const [mustUpdate, setMustUpdate] = useState(0);
+    const [shows, setShows] = useState<Show[]>();
     const refresh = () => {
-        setFilter({search: '', cat: "all", watched: "all"});
-        setShows([...allShows]);
+        console.log(showsConst)
+        setMustUpdate(mustUpdate + 1);
     }
 
     return (
         <main>
             <h1>DawanFlix</h1>
 
-            <ShowsFilter update={setShows} propFilter={filter}/>
+            <ShowsFilter mustUpdate={mustUpdate} setShows={setShows} />
             <div className='grid'>
-
-                { shows.map(show => (
-                  <Card show={show} updateMovies={refresh} key={show.id} />
+                { shows?.map(show => (
+                  <Card show={show} refresh={refresh} key={show.id}  />
                 ))}
-
             </div>
         </main>
     )
